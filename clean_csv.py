@@ -2,6 +2,7 @@
 """
 CSV Cleanup Tool for Trip Data
 Validates dates and ensures proper CSV formatting with quoted place names.
+Supports optional 'type' column for route types (car/flight).
 """
 
 import pandas as pd
@@ -9,7 +10,7 @@ import sys
 from pathlib import Path
 
 
-def clean_trip_csv(input_file, output_file=None, date_column='date', place_column='place'):
+def clean_trip_csv(input_file, output_file=None, date_column='date', place_column='place', type_column='type'):
     """
     Clean and validate trip CSV file.
     - Validates date format
@@ -31,13 +32,20 @@ def clean_trip_csv(input_file, output_file=None, date_column='date', place_colum
         print(f"✗ Error reading CSV: {e}")
         sys.exit(1)
     
-    # Validate columns
+    # Validate required columns
     if date_column not in df.columns or place_column not in df.columns:
         print(f"✗ Error: CSV must have '{date_column}' and '{place_column}' columns")
         print(f"  Found columns: {', '.join(df.columns)}")
         sys.exit(1)
     
-    print(f"  Found {len(df)} rows")
+    # Check for optional type column
+    has_type_column = type_column in df.columns
+    if has_type_column:
+        print(f"  Found {len(df)} rows with '{type_column}' column")
+    else:
+        print(f"  Found {len(df)} rows (no '{type_column}' column)")
+    
+    print(f"  Columns: {', '.join(df.columns)}")
     
     # Validate and parse dates
     print(f"\nValidating dates in '{date_column}' column...")
@@ -86,6 +94,33 @@ def clean_trip_csv(input_file, output_file=None, date_column='date', place_colum
     # Strip whitespace from places
     df[place_column] = df[place_column].str.strip()
     
+    # Validate and clean type column if present
+    if has_type_column:
+        print(f"\nValidating types in '{type_column}' column...")
+        
+        # Standardize type values
+        df[type_column] = df[type_column].fillna('flight').str.lower().str.strip()
+        
+        # Map variations to standard values
+        type_mapping = {
+            'car': 'car',
+            'drive': 'car',
+            'driving': 'car',
+            'flight': 'flight',
+            'fly': 'flight',
+            'airline': 'flight',
+            'plane': 'flight'
+        }
+        
+        df[type_column] = df[type_column].map(lambda x: type_mapping.get(x, 'flight'))
+        
+        # Count types
+        type_counts = df[type_column].value_counts()
+        print(f"  ✓ Route types:")
+        for route_type, count in type_counts.items():
+            icon = "🚗" if route_type == "car" else "✈️"
+            print(f"    {icon} {route_type}: {count}")
+    
     # Save with proper quoting (quotes fields with commas automatically)
     print(f"\nWriting cleaned CSV to: {output_file}")
     df.to_csv(output_file, index=False, quoting=1)  # quoting=1 means QUOTE_ALL
@@ -94,6 +129,8 @@ def clean_trip_csv(input_file, output_file=None, date_column='date', place_colum
     print(f"\nSummary:")
     print(f"  Date range: {df[date_column].min()} to {df[date_column].max()}")
     print(f"  Locations: {len(df)}")
+    if has_type_column:
+        print(f"  Route types: {', '.join([f'{k}={v}' for k, v in type_counts.items()])}")
 
 
 if __name__ == "__main__":
@@ -102,8 +139,13 @@ if __name__ == "__main__":
         print("\nCleans and validates trip CSV files:")
         print("  - Validates date format")
         print("  - Ensures proper quoting for place names")
+        print("  - Validates and standardizes 'type' column (if present)")
         print("  - Sorts by date")
         print("  - Removes invalid rows")
+        print("\nSupported columns:")
+        print("  - date (required): Trip date")
+        print("  - place (required): Location name")
+        print("  - type (optional): 'car', 'drive', 'flight', 'fly', etc.")
         print("\nExamples:")
         print("  python clean_csv.py 2025_trip.csv")
         print("  python clean_csv.py 2025_trip.csv 2025_trip_clean.csv")

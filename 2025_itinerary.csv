@@ -1,69 +1,105 @@
-date,place
-31-Dec-24,LAX
-31-Dec-24,LIH
-1-Jan-25,"Lihue, HI"
-5-Jan-25,"Kailua-Kona, HI"
-12-Jan-25,"Hilo, HI"
-12-Jan-25,"Honolulu, HI"
-29-Jan-25,"Honolulu, HI"
-29-Jan-25,LAX
-14-Feb-25,"Stevenson Ranch, CA"
-15-Feb-25,"Tucson, AZ"
-16-Feb-25,"Junction, TX"
-17-Feb-25,"Kyle, TX"
-17-Feb-25,"Buda, TX"
-18-Feb-25,"Lago Vista, TX"
-18-Apr-25,"New Orleans, LA"
-20-Apr-25,"Kissimmee, FL"
-3-May-25,"Gainesville, FL"
-4-May-25,"Huntsville, AL"
-5-May-25,"Atlanta, GA"
-10-May-25,"Pigeon Forge, TN"
-10-May-25,"Charlotte, NC"
-11-May-25,"Raleigh, NC"
-23-May-25,"Fredericksburg, VA"
-24-May-25,"Monmouth Junction, NJ"
-25-May-25,"Long Beach, NY"
-25-May-25,"West Haven, CT"
-1-Jun-25,"Rossford, OH"
-2-Jun-25,"Munster, IN"
-2-Jun-25,"Niagara Falls, NY"
-3-Jun-25,"Chicago, IL"
-5-Jun-25,"Madison, WI"
-5-Jun-25,"Menomonie, WI"
-6-Jun-25,"Dickinson, ND"
-6-Jun-25,"Williston, ND"
-7-Jun-25,"Brooks, Canada"
-8-Jun-25,"Canmore, AB, Canada"
-9-Jun-25,"Swift Current, SK, Canada"
-10-Jun-25,"Banff, AB, Canada"
-12-Jun-25,"Moraine Lake & Lake Louise, AB"
-13-Jun-25,"Skywalk, Canada"
-28-Jun-25,"Banff, AB"
-5-Jul-25,"Calgary, Canada"
-5-Jul-25,"Greenfield, MT"
-6-Jul-25,"Bozeman, MT"
-13-Jul-25,"Cody, WY"
-14-Jul-25,"Rapid City, SD"
-19-Jul-25,"Iowa City, IA"
-20-Jul-25,"Chicago, IL"
-23-Aug-25,"Lansing, MI"
-24-Aug-25,"London, ON, Canada"
-25-Aug-25,"Oshawa, ON, Canada"
-30-Aug-25,"Gananoque, ON, Canada"
-31-Aug-25,"Victoriaville, QC"
-31-Aug-25,"Quebec City, QC"
-1-Sep-25,"Burlington, VT"
-2-Sep-25,"Killington, VT"
-27-Sep-25,"Lincoln, NH"
-29-Sep-25,"Killington, VT"
-10-Oct-25,"Ithaca, NY"
-10-Oct-25,"Schenectady, NY"
-11-Oct-25,"Wauseon, OH"
-12-Oct-25,"Chicago, IL"
-18-Oct-25,"York, NE"
-19-Oct-25,"Golden, CO"
-20-Oct-25,"Panguitch, UT"
-27-Oct-25, Bryce Canyon
-31-Oct-25,"Springdale, UT"
-2-Nov-25,"Long Beach, CA"
+date,place,type
+31-Dec-24,LAX,flight
+31-Dec-24,LIH,car
+1-Jan-25,"kapaa, hi, USA",car
+1-Jan-25,"Koloa, hi",car
+1-Jan-25,"kapaa, hi, USA",car
+2-Jan-25,"Waimea, hi, 96796",car
+2-Jan-25,"kapaa, hi, USA",car
+3-Jan-25,"kilauea, hi",car
+3-Jan-25,"kapaa, hi, USA",car
+4-Jan-25,"Eleele, Hi",car
+4-Jan-25,"kapaa, hi, USA",car
+5-Jan-25,"Lihue, HI",flight
+5-Jan-25,"Kailua-Kona, HI",car
+7-Jan-25,"waiohinu, Hi 96772",car
+7-Jan-25,"pahala, hi 96777",car
+7-Jan-25,"Kailua-Kona, HI",car
+8-Jan-25,"keauhou bay, hi, 96740",car
+8-Jan-25,"Kailua-Kona, HI",car
+9-Jan-25,"hilo, hi 96719",car
+11-Jan-25,Hawaii Volcanoes National Park,car
+11-Jan-25,"hilo, hi 96720",car
+12-Jan-25,"Hilo, HI",flight
+12-Jan-25,Daniel K. Inouye International Airport,car
+12-Jan-25,"Diamond Head Apartments, Hi 96815",car
+14-Jan-25,"Aloha Tower, honolulu, HI 96813",car
+14-Jan-25,"Diamond Head Apartments, Hi 96815",car
+19-Jan-25,"sandy beach, Honolulu, HI 96825",car
+19-Jan-25,"Diamond Head Apartments, Hi 96814",car
+20-Jan-25,"3000 10th Ave, Honolulu, HI 96816",car
+20-Jan-25,"333A Keahole St, Honolulu, HI 96825",car
+20-Jan-25,"Diamond Head Apartments, Hi 96815",car
+23-Jan-25,"Diamond Head Crater Trailhead, honolulu, hi, 96815 ",car
+29-Jan-25,"417 Nohonani St, Honolulu, HI 96815",car
+29-Jan-25,Daniel K. Inouye International Airport,flight
+29-Jan-25,LAX,car
+14-Feb-25,"Stevenson Ranch, CA",car
+15-Feb-25,"Tucson, AZ",car
+16-Feb-25,"Junction, TX",car
+17-Feb-25,"Kyle, TX",car
+17-Feb-25,"Buda, TX",car
+18-Feb-25,"Lago Vista, TX",car
+18-Feb-25,austin tx,car
+22-Feb-25,"houston, tx",car
+18-Apr-25,"New Orleans, LA",car
+19-Apr-25,"gulfport, ms",car
+20-Apr-25,"Kissimmee, FL",car
+3-May-25,"Gainesville, FL",car
+4-May-25,"Huntsville, AL",car
+5-May-25,"Atlanta, GA",car
+10-May-25,"Pigeon Forge, TN",car
+10-May-25,"Charlotte, NC",car
+11-May-25,"Raleigh, NC",car
+23-May-25,"Fredericksburg, VA",car
+24-May-25,"Monmouth Junction, NJ",car
+25-May-25,"Long Beach, NY",car
+25-May-25,"West Haven, CT",car
+25-May-25,"Cambridge, MA 02138",car
+30-May-25,"Albany, NY 12210",car
+31-May-25,"Niagara Falls, NY 14303",car
+1-Jun-25,"Cleveland, OH 44115",car
+1-Jun-25,"Rossford, OH",car
+2-Jun-25,"Munster, IN",car
+3-Jun-25,"Chicago, IL",car
+5-Jun-25,"Chicago, IL 60666",car
+5-Jun-25,"Madison, WI",car
+5-Jun-25,"Menomonie, WI",car
+5-Jun-25,"maple grove, MN 55369",car
+6-Jun-25,"Dickinson, ND",car
+6-Jun-25,"Williston, ND",car
+7-Jun-25,"Brooks, AB, Canada",car
+8-Jun-25,"Canmore, AB, Canada",car
+9-Jun-25,"Swift Current, SK, Canada",car
+10-Jun-25,"Banff, AB, Canada",car
+12-Jun-25,"Moraine Lake, AB",car
+12-Jun-25,"Lake Louise, AB",car
+13-Jun-25,"Icefields Pkwy 12 AB, Canada",car
+28-Jun-25,"Banff, AB",car
+5-Jul-25,"Calgary, Canada",car
+5-Jul-25,"Greenfield, MT",car
+6-Jul-25,"Bozeman, MT",car
+13-Jul-25,"Cody, WY",car
+14-Jul-25,"Rapid City, SD",car
+19-Jul-25,"Iowa City, IA",car
+20-Jul-25,"Chicago, IL",car
+23-Aug-25,"Lansing, MI",car
+24-Aug-25,"London, ON, Canada",car
+25-Aug-25,"Oshawa, ON, Canada",car
+30-Aug-25,"Gananoque, ON, Canada",car
+31-Aug-25,"Victoriaville, QC",car
+31-Aug-25,"Quebec City, QC",car
+1-Sep-25,"Burlington, VT",car
+2-Sep-25,"Killington, VT",car
+27-Sep-25,"Lincoln, NH",car
+29-Sep-25,"Killington, VT",car
+10-Oct-25,"Schenectady, NY",car
+10-Oct-25,"Ithaca, NY",car
+11-Oct-25,"Wauseon, OH",car
+12-Oct-25,"Chicago, IL",car
+18-Oct-25,"York, NE",car
+19-Oct-25,"Golden, CO",car
+20-Oct-25,"Panguitch, UT",car
+27-Oct-25, Bryce Canyon,car
+31-Oct-25,"Springdale, UT",car
+2-Nov-25,"Long Beach, CA",car

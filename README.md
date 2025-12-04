@@ -1,12 +1,14 @@
 # Trip Map Visualizer
 
-Create interactive maps from your trip data with places connected by timeline!
+Create interactive maps from your trip data with places connected by timeline! Supports both flight routes (straight lines) and car routes (following roads).
 
 ## Features
 
 - 📍 Automatically geocodes place names to coordinates
 - 🗺️ Creates interactive maps with markers for each location
 - 📅 Connects locations with lines based on chronological order
+- ✈️ **Flight routes**: Dashed blue lines (straight geodesic)
+- 🚗 **Car routes**: Solid green lines following actual roads
 - 🎨 Color-coded markers (red=start, green=end, blue=middle points)
 - 🔢 Numbered markers showing visit sequence
 
@@ -20,6 +22,7 @@ pip install -r requirements.txt
 
 1. Create a CSV file with your trip data (see `example_trips.csv`):
    - Required columns: `date` and `place`
+   - Optional column: `type` (values: `car`, `flight`, `drive`, `driving`)
    - Date format: YYYY-MM-DD (or any format pandas can parse)
 
 2. Run the script:
@@ -34,22 +37,59 @@ python tripmap.py your_trips.csv
 python tripmap.py your_trips.csv my_custom_map.html
 ```
 
+### Using Google Maps for car routing (optional):
+```bash
+# Set your Google Maps API key
+export GOOGLE_MAPS_API_KEY='your-api-key-here'
+
+# Then run normally
+python tripmap.py your_trips.csv
+```
+
+**Note**: Without a Google API key, the tool uses free OSRM routing which works great for most routes!
+
 ## Example CSV Format
 
+### With route types:
+```csv
+date,place,type
+2024-01-15,"Paris, France",flight
+2024-01-20,"Lyon, France",car
+2024-01-25,"Marseille, France",car
+2024-02-01,"Rome, Italy",flight
+```
+
+### Without route types (defaults to flight):
 ```csv
 date,place
-2024-01-15,Paris, France
-2024-02-20,Rome, Italy
-2024-03-10,Barcelona, Spain
+2024-01-15,"Paris, France"
+2024-02-20,"Rome, Italy"
 ```
+
+## Route Types
+
+- **`flight`** or **`airline`**: Dashed blue straight line (geodesic)
+- **`car`**, **`drive`**, or **`driving`**: Solid green line following roads
 
 ## How it works
 
 1. Reads your CSV file
 2. Sorts locations by date
 3. Geocodes place names using OpenStreetMap (free!)
-4. Creates an interactive Folium map
-5. Adds markers for each location
-6. Connects them with lines showing your journey
+4. For each connection:
+   - **Flights**: Draws straight dashed lines
+   - **Car trips**: Fetches actual road routes (OSRM or Google Maps)
+5. Creates an interactive Folium map
+6. Adds markers for each location with popups
+
+## Google Maps API Setup (Optional)
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a project and enable "Directions API"
+3. Create an API key
+4. Set it as environment variable:
+   ```bash
+   export GOOGLE_MAPS_API_KEY='your-api-key-here'
+   ```
 
 Perfect for visualizing road trips, backpacking adventures, or any travel timeline!

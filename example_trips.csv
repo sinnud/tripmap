@@ -1,6 +1,7 @@
-date,place
-2024-01-15,"Paris, France"
-2024-02-20,"Rome, Italy"
-2024-03-10,"Barcelona, Spain"
-2024-04-05,"Amsterdam, Netherlands"
-2024-05-12,"London, UK"
+date,place,type
+2024-01-15,"Paris, France",flight
+2024-01-20,"Lyon, France",car
+2024-01-25,"Marseille, France",car
+2024-02-01,"Rome, Italy",flight
+2024-02-05,"Florence, Italy",car
+2024-02-10,"Barcelona, Spain",flight
