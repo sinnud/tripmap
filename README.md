@@ -1,14 +1,16 @@
 # Trip Map Visualizer
 
-Create interactive maps from your trip data with places connected by timeline! Supports both flight routes (straight lines) and car routes (following roads).
+Create interactive animated maps from your trip data! Watch a marker travel along your route with smooth animations, showing both flight and driving segments.
 
 ## Features
 
 - 📍 Automatically geocodes place names to coordinates
 - 🗺️ Creates interactive maps with markers for each location
-- 📅 Connects locations with lines based on chronological order
-- ✈️ **Flight routes**: Dashed blue lines (straight geodesic)
-- 🚗 **Car routes**: Solid green lines following actual roads
+- 🎬 **Animated playback** - Watch an orange marker travel along your entire route
+- ⏯️ **Play/Pause controls** - Control the animation with an easy-to-use button
+- 📅 Connects locations chronologically based on dates
+- ✈️ **Flight routes**: Blue dashed lines (straight geodesic)
+- 🚗 **Car routes**: Green solid lines following actual roads
 - 🎨 Color-coded markers (red=start, green=end, blue=middle points)
 - 🔢 Numbered markers showing visit sequence
 
@@ -32,6 +34,8 @@ python tripmap.py your_trips.csv
 
 3. Open the generated `trip_map.html` in your browser!
 
+4. Click the **"▶️ Play Trip Animation"** button to watch your journey!
+
 ### Custom output filename:
 ```bash
 python tripmap.py your_trips.csv my_custom_map.html
@@ -47,6 +51,16 @@ python tripmap.py your_trips.csv
 ```
 
 **Note**: Without a Google API key, the tool uses free OSRM routing which works great for most routes!
+
+## Animation Features
+
+The generated map includes an interactive animation that:
+- Shows an **orange marker** that travels along your route
+- Animates at **~20 frames per second** for smooth movement
+- Can be **paused and resumed** at any time
+- Shows all routes statically in the background
+- Automatically moves through all segments (flights and drives)
+- Displays a **restart button** when complete
 
 ## Example CSV Format
 
@@ -68,8 +82,8 @@ date,place
 
 ## Route Types
 
-- **`flight`** or **`airline`**: Dashed blue straight line (geodesic)
-- **`car`**, **`drive`**, or **`driving`**: Solid green line following roads
+- **`flight`** or **`airline`**: Blue dashed straight line (geodesic)
+- **`car`**, **`drive`**, or **`driving`**: Green solid line following roads
 
 ## How it works
 
@@ -79,8 +93,9 @@ date,place
 4. For each connection:
    - **Flights**: Draws straight dashed lines
    - **Car trips**: Fetches actual road routes (OSRM or Google Maps)
-5. Creates an interactive Folium map
-6. Adds markers for each location with popups
+5. Creates an interactive Folium map with all routes
+6. Injects custom JavaScript for smooth animation
+7. Adds play/pause controls for interactive playback
 
 ## Google Maps API Setup (Optional)
 
@@ -92,4 +107,4 @@ date,place
    export GOOGLE_MAPS_API_KEY='your-api-key-here'
    ```
 
-Perfect for visualizing road trips, backpacking adventures, or any travel timeline!
+Perfect for visualizing road trips, backpacking adventures, or any travel timeline with smooth animated playback!
